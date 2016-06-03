@@ -27,8 +27,8 @@ java -jar finalspeed.jar -b 运行CLI版
 java -jar finalspeed.jar 运行GUI版
 ```
 
-配置文件与finalspeed必须处在同一目录下.
-clien_config.json
+配置文件与finalspeed必须处在同一目录下.<br>
+client_config.json
 ```
 {
     // 下载速度，单位是 B，字节。这里换算起来就是 11MB。请把这里改成本机的下载速度
@@ -45,6 +45,7 @@ clien_config.json
     "upload_speed": 357469
 }
 ```
+
 port_map.json
 ```
 {
