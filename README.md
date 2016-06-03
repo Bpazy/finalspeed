@@ -14,14 +14,18 @@ Build client: `./gradlew releaseClient`<br>
 Build server: `./gradlew releaseServer`<br>
 Build client&server: `./gradlew release`
 
-### Usage
+Client: `output/FinalSpeedClient-version.jar`<br>
+Server: `output/FinalSpeedServer-version.jar`<br>
+
+`/output/libs/*.jar` is required.
+## Usage
 ```
 需要管理员权限
 java -jar finalspeed.jar -b 运行CLI版
 java -jar finalspeed.jar 运行GUI版
 ```
 
-CLI版本需要手动配置, 且配置文件与finalspeed必须处在同一目录下.
+配置文件与finalspeed必须处在同一目录下.
 clien_config.json
 ```
 {
