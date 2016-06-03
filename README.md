@@ -14,10 +14,12 @@ Build client: `./gradlew releaseClient`<br>
 Build server: `./gradlew releaseServer`<br>
 Build client&server: `./gradlew release`
 
+###Binary
 Client: `output/FinalSpeedClient-version.jar`<br>
 Server: `output/FinalSpeedServer-version.jar`<br>
 
 `/output/libs/*.jar` is required.
+
 ## Usage
 ```
 需要管理员权限
