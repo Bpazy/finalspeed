@@ -1,0 +1,72 @@
+apply plugin: 'java'
+version "2.0"
+
+sourceCompatibility = 1.7
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+    compile 'org.slf4j:slf4j-api:1.7.13'
+    compile 'org.slf4j:slf4j-nop:1.7.21'
+    compile 'org.pcap4j:pcap4j-core:1.6.4'
+    compile 'org.pcap4j:pcap4j-packetfactory-static:1.6.4'
+    compile 'net.java.dev.jna:jna:4.2.2'
+    compile 'com.alibaba:fastjson:1.2.12'
+    compile 'commons-cli:commons-cli:1.3.1'
+    compile 'com.miglayout:miglayout-swing:5.0'
+}
+
+task makeClientJar(type: Jar, dependsOn: ['classes']) {
+    baseName 'FinalSpeedClient'
+    from 'build/classes/main'
+    from 'build/resources/main'
+    manifest {
+        attributes(
+                'Main-Class': 'net/fs/client/FSClient',
+                'Class-Path': configurations.compile.collect { 'libs/' + it.getName() }.join(' ')
+        )
+    }
+}
+
+task libJar(type: Copy) {
+    from configurations.compile
+    into 'output/libs'
+}
+
+task releaseClient(type: Copy, dependsOn: ['makeClientJar', 'libJar']) {
+    from('build/libs') {
+        include '*.jar'
+    }
+    into('output')
+}
+
+task makeServerJar(type: Jar, dependsOn: 'classes') {
+    baseName 'FinalSpeedServer'
+    from 'build/classes/main'
+    manifest {
+        attributes(
+                'Main-Class': 'net/fs/server/FSServer',
+                'Class-Path': configurations.compile.collect { 'libs/' + it.getName() }.join(' ')
+        )
+    }
+}
+
+task releaseServer(type: Copy, dependsOn: ['makeServerJar', 'libJar']) {
+    from('build/libs') {
+        include '*.jar'
+    }
+    into('output')
+}
+
+clean.doFirst {
+    delete 'output'
+}
+
+task release(dependsOn: ['releaseClient', 'releaseServer'])
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

@@ -1,0 +1,7 @@
+/.gradle
+/.idea
+/build
+/client_config.json
+/finalspeed.iml
+/port_map.json
+/output
