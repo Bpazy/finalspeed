@@ -69,7 +69,7 @@ public class ClientUI implements ClientUII, WindowListener {
     {
         domain = "ip4a.com";
         homeUrl = "http://www.ip4a.com/?client_fs";
-        updateUrl = "http://fs.d1sm.net/finalspeed/update.properties";
+        updateUrl = "https://github.com/Bpazy/finalspeed/blob/master/update.properties";
     }
 
     ClientUI(final boolean isVisible, boolean min) {
